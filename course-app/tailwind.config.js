@@ -5,7 +5,11 @@ export default {
     "./public/index.html"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'], // Add Poppins to the font family
+      },
+    },
   },
   plugins: [],
 }

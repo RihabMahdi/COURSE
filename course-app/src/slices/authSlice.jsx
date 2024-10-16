@@ -1,7 +1,5 @@
-// src/slices/authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-// Function to load registered users from localStorage
 const loadRegisteredUsers = () => {
   const storedUsers = localStorage.getItem('registeredUsers');
   return storedUsers ? JSON.parse(storedUsers) : [];
@@ -11,7 +9,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
-    registeredUsers: loadRegisteredUsers(), // Load users from localStorage
+    registeredUsers: loadRegisteredUsers(), 
   },
   reducers: {
     login: (state, action) => {
@@ -20,16 +18,15 @@ const authSlice = createSlice({
         (user) => user.username === username && user.password === password
       );
       if (user) {
-        state.user = user; // Log in the user
+        state.user = user; 
       }
     },
     logout: (state) => {
-      state.user = null; // Reset the user on logout
+      state.user = null; 
     },
     register: (state, action) => {
       const newUser = action.payload;
-      state.registeredUsers.push(newUser); // Add new user to registered users
-      // Update localStorage
+      state.registeredUsers.push(newUser); 
       localStorage.setItem('registeredUsers', JSON.stringify(state.registeredUsers));
     },
   },
